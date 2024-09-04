@@ -1,4 +1,48 @@
 #!/opt/pwn.college/python
 
-with open("/flag") as f:
-    print(f.read())
+import ast
+
+def check_filename(filename):
+    # Expected output of the checked file contents
+    expected_output = "Hello World!"
+
+    try:
+        # Reads the contents of the file
+        with open(filename, 'r') as file:
+            user_code = file.read()
+
+        # Parses the code
+        parsed_code = ast.parse(user_code)
+
+        # Redirect output to capture it for comparison
+        from io import StringIO
+        import sys
+
+        old_stdout = sys.stdout
+        sys.stdout = StringIO()
+
+        # Execute the user's code
+        exec(user_code)
+
+        # Capture the output of the executed program
+        output = sys.stdout.getvalue().strip()
+
+        # Restore stdout
+        sys.stdout = old_stdout
+
+        # Checks if the output matches the expected output
+        if output == expected_output:
+            with open("/flag") as f:
+                flag = f.read().strip()
+            print(f"Congratulations! Here is your flag: {flag}")
+        else:
+            print(f"Error: The output was '{output}', but it should be '{expected_output}'.")
+
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' does not exist.")
+    except Exception as e:
+        print(f"Error: There was an issue with your code. {str(e)}")
+
+if __name__ == "__main__":
+    filename = "/home/hacker/hello_world.py"
+    check_filename(filename)
