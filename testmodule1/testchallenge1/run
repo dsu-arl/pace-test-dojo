@@ -3,4 +3,4 @@
 import flask
 
 print("Flask got imported!")
-print(open("/flag.txt").read())
+print(open("/flag" , "r").read())
