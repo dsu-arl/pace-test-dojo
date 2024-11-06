@@ -1,4 +1,4 @@
-#!/challenge/bin/python3.8
+#!/challenge/python
 
 import flask
 
