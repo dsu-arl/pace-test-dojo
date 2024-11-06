@@ -1,4 +1,4 @@
-#!/opt/pwn.college/python
+#!/run/challenge/bin/python3.8
 
 import ast
 
