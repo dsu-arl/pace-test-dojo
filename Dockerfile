@@ -1,3 +1,6 @@
-FROM pwncollege:challenge-legacy
+FROM pwncollege/challenge-legacy
 
-RUN apt update && apt install steghide autopsy
+USER root
+RUN apt update && apt install -y steghide autopsy
+
+USER hacker

@@ -1,6 +1,7 @@
 id: test
 name: Test Dojo
 type: roadshow
+image: nickm543/pc-test
 modules:
   - id: testmodule1
   - id: testmodule2
