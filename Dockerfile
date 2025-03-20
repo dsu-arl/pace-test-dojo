@@ -1,4 +1,4 @@
-FROM pwncollege/challenge-legacy
+FROM ubuntu:latest
 
 USER root
 RUN apt update && apt install -y steghide autopsy
