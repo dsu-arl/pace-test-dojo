@@ -1,4 +1,4 @@
-#!/challenge/python
+#!/usr/bin/exec-suid --real -- /usr/bin/python -I
 
 import flask
 
